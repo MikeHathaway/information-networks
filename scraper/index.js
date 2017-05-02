@@ -1,5 +1,8 @@
 //I will be attempting to build network maps of the political conversation.
 
+//create an array of objects, where each object is a site with a url and associated metadata
+    // [{site: url, bias: right, commentsNum: 0},{site: url, bias: left, commentsNum: 0}]
+
 //Useful links:
 //https://www.ted.com/talks/manuel_lima_a_visual_history_of_human_knowledge
 
@@ -19,26 +22,34 @@ const sitesOfInterest = [
 function scraper(options){
   const seneca = this
 
-  seneca.add({role: 'scraper', cmd: 'crawlingControlFlow'}, crawlingControlFlow)
+  seneca.add({role: 'scraper', cmd: 'crawlingControlFlow'}, function(args,done) {
+    const sitesToScrape = args.sites
 
-  done(null, {result: result})
-
+    const result = Promise.map(sitesToScrape, (site) => {
+      return crawlSite(site)
+    })
+    .then((data) => {
+      done(null, data)
+    })
+    .catch(err => {
+      done(err,null)
+    })
+  })
 }
+
 
 //Promise.map is the same as a map within a Promise.all(), part of Bluebird
-function crawlingControlFlow(listOfSites){
-  return Promise.map(listOfSites, (site) => {
-    return crawlSite(site)
-  })
-  .then((data) => {
-    // console.log(data)
-    return data
-    // console.log(data)
-  })
-  .catch(err => {
-    throw err
-  })
-}
+// function crawlingControlFlow(listOfSites){
+//   return Promise.map(listOfSites, (site) => {
+//     return crawlSite(site)
+//   })
+//   .then((data) => {
+//     return data
+//   })
+//   .catch(err => {
+//     throw err
+//   })
+// }
 
 function crawlSite(pageToVisit){
   return rp(pageToVisit)
@@ -53,8 +64,6 @@ function targetHTML(htmlString){
   return cheerio.load(htmlString)
 }
 
-//create an array of objects, where each object is a site with a url and associated metadata
-    // [{site: url, bias: right, commentsNum: 0},{site: url, bias: left, commentsNum: 0}]
 function retreiveMetaData($){
   const headlines = $('article').text()
   return headlines.split('         ').map(headline =>{
@@ -62,7 +71,8 @@ function retreiveMetaData($){
   })
 }
 
+// module.exports = {
+//   crawlingControlFlow
+// }
 
-module.exports = {
-  crawlingControlFlow
-}
+module.exports = scraper
