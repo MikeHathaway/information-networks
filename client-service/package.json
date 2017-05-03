@@ -1,5 +1,5 @@
 {
-  "name": "info-net-analysis",
+  "name": "client-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",
-    "cheerio": "^0.22.0",
     "express": "^4.15.2",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",

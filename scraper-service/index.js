@@ -11,45 +11,21 @@ const cheerio = require('cheerio')
 const Promise = require('bluebird')
 
 
-const pageToVisit = 'https://www.nytimes.com'
-const sitesOfInterest = [
-  'http://www.breitbart.com/',
-  'https://www.nytimes.com'
-]
-
-
 
 function scraper(options){
   const seneca = this
-
-  seneca.add({role: 'scraper', cmd: 'crawlingControlFlow'}, function(args,done) {
-    const sitesToScrape = args.sites
-
-    const result = Promise.map(sitesToScrape, (site) => {
-      return crawlSite(site)
-    })
-    .then((data) => {
-      done(null, data)
-    })
-    .catch(err => {
-      done(err,null)
-    })
-  })
+  seneca.add({role: 'scraper', cmd: 'crawlingControlFlow'}, crawlingControlFlow)
 }
 
 
-//Promise.map is the same as a map within a Promise.all(), part of Bluebird
-// function crawlingControlFlow(listOfSites){
-//   return Promise.map(listOfSites, (site) => {
-//     return crawlSite(site)
-//   })
-//   .then((data) => {
-//     return data
-//   })
-//   .catch(err => {
-//     throw err
-//   })
-// }
+function crawlingControlFlow(args,done){
+  return Promise.map(args.sites, (site) => {
+    return crawlSite(site)
+  })
+  .then((data) => done(null, data))
+  .catch(err => done(err,null))
+}
+
 
 function crawlSite(pageToVisit){
   return rp(pageToVisit)
@@ -70,9 +46,5 @@ function retreiveMetaData($){
     return {'headline': headline}
   })
 }
-
-// module.exports = {
-//   crawlingControlFlow
-// }
 
 module.exports = scraper
