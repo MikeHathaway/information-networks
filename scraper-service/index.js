@@ -14,7 +14,7 @@ const Promise = require('bluebird')
 
 function scraper(options){
   const seneca = this
-  seneca.add({role: 'scraper', cmd: 'crawlingControlFlow'}, crawlingControlFlow)
+  return seneca.add({role: 'scraper', cmd: 'crawlingControlFlow'}, crawlingControlFlow)
 }
 
 
@@ -42,6 +42,7 @@ function targetHTML(htmlString){
 
 function retreiveMetaData($){
   const headlines = $('article').text()
+  console.log(headlines)
   return headlines.split('         ').map(headline =>{
     return {'headline': headline}
   })
