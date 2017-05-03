@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "dotenv": "^4.0.0",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
-    "seneca": "^3.3.0"
+    "seneca": "^3.3.0",
+    "textrazor": "^2.1.0"
   }
 }

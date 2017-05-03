@@ -42,7 +42,6 @@ function targetHTML(htmlString){
 
 function retreiveMetaData($){
   const headlines = $('article').text()
-  console.log(headlines)
   return headlines.split('         ').map(headline =>{
     return {'headline': headline}
   })
