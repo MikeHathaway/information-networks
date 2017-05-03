@@ -22,10 +22,7 @@ function analyzeText(){
 }
 
 function callApi(text){
-  setApiOptions(text)
-  console.log(setApiOptions(text).method)
-
-  return rp(text)
+  return rp(setApiOptions(text))
     .then(result => {
       console.log(result)
       return result
@@ -33,15 +30,20 @@ function callApi(text){
     .catch(error => console.error(error))
 }
 
+//topic.label
 function setApiOptions(text){
-  const options = {
+  return {
     method: 'POST',
     uri: textRazorUrl + api_endpoint,
-    'X-TextRazor-Key': api_key,
-    text: text,
-    'cleanup.mode': 'cleanHTML',
+    headers: {
+      'X-TextRazor-Key': api_key,
+    },
+    body: {
+      text: text,
+      'cleanup.mode': 'cleanHTML',
+    },
+    json: true
   }
-  return options
 }
 
 
@@ -51,6 +53,6 @@ seneca.act({role: 'scraper', cmd: 'scrapeSites', sites: sitesOfInterest}, (err, 
   if(err){
     console.error(err)
   }
-
-  callApi(result[0])
+  console.log(result)//.attribs)
+  // callApi(result)
 })
