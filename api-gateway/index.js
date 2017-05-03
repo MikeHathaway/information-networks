@@ -1,5 +1,7 @@
 const seneca = require('seneca')()
 const scraper = require('../scraper-service')
+const textAnalyzer = require('../nlp-service')
+
 const nlp = require('../nlp-service')
 
 
@@ -20,11 +22,18 @@ const sitesOfInterest = [
 
 
 seneca.use(scraper)
+seneca.use(textAnalyzer)
 
 seneca.act({role: 'scraper', cmd: 'scrapeSites', sites: sitesOfInterest}, (err, result) => {
   if(err){
     console.error(err)
   }
+  console.log(result)
+})
 
+seneca.act({role: 'analysis', cmd: 'analyzeText'}, texts: results}, (err, result) => {
+  if(err){
+    console.error(err)
+  }
   console.log(result)
 })

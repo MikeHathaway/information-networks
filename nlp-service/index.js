@@ -2,7 +2,6 @@
 //https://www.npmjs.com/package/google-nlp
 
 const seneca = require('seneca')()
-const rp = require('request-promise')
 const Promise = require('bluebird')
 const scraper = require('../scraper-service')
 const dotenv = require('dotenv').config({path: 'nlp-service/.env'})
@@ -19,12 +18,12 @@ const sitesOfInterest = [
 
 function textAnalyzer(options){
   const seneca = this
-  return seneca.add({role: 'scraper', cmd: 'analyzeText'}, analyzeText)
+  return seneca.add({role: 'analysis', cmd: 'analyzeText'}, analyzeText)
 }
 
 function analyzeText(args,done){
-  return Promise.map(args.sites, (site) => {
-    return callApi(site)
+  return Promise.map(args.texts, (text) => {
+    return callApi(text)
   })
   .then((data) => done(null, data))
   .catch(err => done(err,null))
@@ -33,7 +32,8 @@ function analyzeText(args,done){
 function callApi(text){
   return nlp.analyzeSentiment(text)
       .then((sentiment) => {
-          console.log( 'Sentiment:', sentiment );
+          console.log( 'Sentiment:', sentiment.sentences );
+          return sentiment
       })
       .catch((error) => {
           console.log( 'Error:', error.message );
