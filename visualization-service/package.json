@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-service",
+  "name": "visualization-service",
   "version": "1.0.0",
   "description": "Coordinates various services in providing dashboard information",
   "main": "index.js",
