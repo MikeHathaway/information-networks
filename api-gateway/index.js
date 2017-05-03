@@ -1,5 +1,5 @@
 const seneca = require('seneca')()
-const scraper = require('./scraper-service')
+const scraper = require('../scraper-service')
 
 const sitesOfInterest = [
   'http://www.breitbart.com/',
