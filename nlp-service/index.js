@@ -3,6 +3,7 @@
 
 const seneca = require('seneca')()
 const rp = require('request-promise')
+const Promise = require('bluebird')
 const scraper = require('../scraper-service')
 const dotenv = require('dotenv').config({path: 'nlp-service/.env'})
 const api_key = process.env.GOOGLE_API_KEY
@@ -16,8 +17,13 @@ const sitesOfInterest = [
   'http://www.economist.com/'
 ]
 
-function analyzeText(){
-  return Promise.map(sitesOfInterest, (site) => {
+function textAnalyzer(options){
+  const seneca = this
+  return seneca.add({role: 'scraper', cmd: 'analyzeText'}, analyzeText)
+}
+
+function analyzeText(args,done){
+  return Promise.map(args.sites, (site) => {
     return callApi(site)
   })
   .then((data) => done(null, data))
@@ -41,11 +47,12 @@ seneca.act({role: 'scraper', cmd: 'scrapeSites', sites: sitesOfInterest}, (err, 
   if(err){
     console.error(err)
   }
-  console.log(result)//.attribs)
-  callApi(result[0][0].headline)
+  // console.log(result)//.attribs)
+  const breitbartSentiment = callApi(result[0][0].headline)
+  console.log(breitbartSentiment)
 })
 
 
 
 
-module.exports = analyzeText
+module.exports = textAnalyzer
