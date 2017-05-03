@@ -14,11 +14,11 @@ const Promise = require('bluebird')
 
 function scraper(options){
   const seneca = this
-  return seneca.add({role: 'scraper', cmd: 'crawlingControlFlow'}, crawlingControlFlow)
+  return seneca.add({role: 'scraper', cmd: 'scrapeSites'}, scrapeSites)
 }
 
 
-function crawlingControlFlow(args,done){
+function scrapeSites(args,done){
   return Promise.map(args.sites, (site) => {
     return crawlSite(site)
   })

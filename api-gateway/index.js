@@ -1,5 +1,7 @@
 const seneca = require('seneca')()
 const scraper = require('../scraper-service')
+const nlp = require('../nlp-service')
+
 
 const sitesOfInterest = [
   'http://www.breitbart.com/',
@@ -19,7 +21,7 @@ const sitesOfInterest = [
 
 seneca.use(scraper)
 
-seneca.act({role: 'scraper', cmd: 'crawlingControlFlow', sites: sitesOfInterest}, (err, result) => {
+seneca.act({role: 'scraper', cmd: 'scrapeSites', sites: sitesOfInterest}, (err, result) => {
   if(err){
     console.error(err)
   }
