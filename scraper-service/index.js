@@ -41,12 +41,12 @@ function targetHTML(htmlString){
 }
 
 function retreiveMetaData($){
-  const headlines = $('article')//.text()
-  // return headlines.split('         ').map(headline =>{
-  //   return {'headline': headline}
-  // })
+  const headlines = $('article').text()
+  return headlines.split('         ').map(headline =>{
+    return {'headline': headline}
+  })
   // console.log(headlines)
-  return headlines
+  // return headlines
 }
 
 module.exports = scraper
