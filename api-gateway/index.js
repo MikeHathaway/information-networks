@@ -2,8 +2,6 @@ const seneca = require('seneca')()
 const scraper = require('../scraper-service')
 const textAnalyzer = require('../nlp-service')
 
-const nlp = require('../nlp-service')
-
 
 const sitesOfInterest = [
   'http://www.breitbart.com/',
@@ -22,18 +20,19 @@ const sitesOfInterest = [
 
 
 seneca.use(scraper)
-seneca.use(textAnalyzer)
+// seneca.use(textAnalyzer)
+// seneca.use(textAnalyzer, {texts: options.text})
 
+//Defines a pattern to respond to, and the nature of that response
 seneca.act({role: 'scraper', cmd: 'scrapeSites', sites: sitesOfInterest}, (err, result) => {
   if(err){
     console.error(err)
   }
-  console.log(result)
+  textAnalyzer(result)
 })
 
-seneca.act({role: 'analysis', cmd: 'analyzeText'}, texts: results}, (err, result) => {
-  if(err){
-    console.error(err)
-  }
-  console.log(result)
-})
+//listens at the specified port for actions
+seneca.listen({host:"localhost",port:"5000"});
+
+//Test for listening
+  //curl -d '{"role":"scraper","cmd":"scrapeSites","sites:"http://www.breitbart.com/"}' http://127.0.0.1:5000/act

@@ -40,6 +40,7 @@ function targetHTML(htmlString){
   return cheerio.load(htmlString)
 }
 
+//may want to look into utilizing the .trim() string method
 function retreiveMetaData($){
   const headlines = $('article').text()
   return headlines.split('         ').map(headline =>{
