@@ -12,18 +12,12 @@ const Promise = require('bluebird')
 
 
 
-function scraper(options){
-  const seneca = this
-  return seneca.add({role: 'scraper', cmd: 'scrapeSites'}, scrapeSites)
-}
-
-
-function scrapeSites(args,done){
-  return Promise.map(args.sites, (site) => {
+function scrapeSites(sites){
+  return Promise.map(sites, (site) => {
     return crawlSite(site)
   })
-  .then((data) => done(null, data))
-  .catch(err => done(err,null))
+  .then((data) => data)
+  .catch(err => console.error(err))
 }
 
 
@@ -46,8 +40,6 @@ function retreiveMetaData($){
   return headlines.split('         ').map(headline =>{
     return {'headline': headline}
   })
-  // console.log(headlines)
-  // return headlines
 }
 
-module.exports = scraper
+module.exports = scrapeSites

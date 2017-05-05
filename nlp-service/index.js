@@ -1,7 +1,6 @@
 //https://www.textrazor.com/technology
 //https://www.npmjs.com/package/google-nlp
 
-const seneca = require('seneca')()
 const Promise = require('bluebird')
 const scraper = require('../scraper-service')
 const dotenv = require('dotenv').config({path: 'nlp-service/.env'})
@@ -10,23 +9,13 @@ const NLP = require('google-nlp')
 const nlp = new NLP(api_key)
 
 
-const sitesOfInterest = [
-  'http://www.breitbart.com/',
-  'https://www.nytimes.com',
-  'http://www.economist.com/'
-]
 
-function textAnalyzer(options){
-  const seneca = this
-  return seneca.add({role: 'analysis', cmd: 'analyzeText'}, analyzeText)
-}
-
-function analyzeText(args,done){
-  return Promise.map(args.texts, (text) => {
-    return callApi(text)
+function analyzeText(texts){
+  return Promise.map(texts, (text) => {
+    return callApi(text.headline)
   })
-  .then((data) => done(null, data))
-  .catch(err => done(err,null))
+  .then((data) => data)
+  .catch(err => console.error(err))
 }
 
 function callApi(text){
@@ -41,18 +30,7 @@ function callApi(text){
 }
 
 
-seneca.use(scraper)
-
-seneca.act({role: 'scraper', cmd: 'scrapeSites', sites: sitesOfInterest}, (err, result) => {
-  if(err){
-    console.error(err)
-  }
-  // console.log(result)//.attribs)
-  const breitbartSentiment = callApi(result[0][0].headline)
-  console.log(breitbartSentiment)
-})
 
 
 
-
-module.exports = textAnalyzer
+module.exports = analyzeText

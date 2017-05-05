@@ -1,6 +1,9 @@
-const seneca = require('seneca')()
+const express = require('express')
+const port = process.env.PORT || '3000'
+const app = express()
+
 const scraper = require('../scraper-service')
-const textAnalyzer = require('../nlp-service')
+const analyzeText = require('../nlp-service')
 
 
 const sitesOfInterest = [
@@ -10,29 +13,25 @@ const sitesOfInterest = [
 ]
 
 
-//Microservices methodology
-  //http://jakepruitt.com/2015/02/09/beginners-guide-to-seneca-js.html
-  //http://imatmati.github.io/blog/posts/seneca-docker
-
-  //use this to provide a common base of dependencies that can be referenced by all services
-    //https://github.com/eoinsha/node-seneca-base/tree/master/examples
+app.get('/',getSiteSentiment(sitesOfInterest))
 
 
 
-seneca.use(scraper)
-// seneca.use(textAnalyzer)
-// seneca.use(textAnalyzer, {texts: options.text})
-
-//Defines a pattern to respond to, and the nature of that response
-seneca.act({role: 'scraper', cmd: 'scrapeSites', sites: sitesOfInterest}, (err, result) => {
-  if(err){
-    console.error(err)
+function getSiteSentiment(sitesOfInterest){
+  return (req,res,next) => {
+    return res.send(siteSentimentPromise(sitesOfInterest))
   }
-  textAnalyzer(result)
-})
+}
 
-//listens at the specified port for actions
-seneca.listen({host:"localhost",port:"5000"});
+function siteSentimentPromise(sitesOfInterest){
+  return scraper(sitesOfInterest)
+    .then((data) => analyzeText(data[0]))
+    .then((result) => result)
+    .catch((err) => console.error(err))
+}
 
-//Test for listening
-  //curl -d '{"role":"scraper","cmd":"scrapeSites","sites:"http://www.breitbart.com/"}' http://127.0.0.1:5000/act
+
+
+app.listen(port, () => {
+  console.log('Listening on port', port)
+});
