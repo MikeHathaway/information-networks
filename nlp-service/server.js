@@ -1,13 +1,12 @@
 const app = require('express')()
 const bodyparser = require('body-parser')
-const port = process.env.PORT || '3000'
-const scraperAPI = require('./api')
+const port = process.env.PORT || '4000'
+const nlpAPI = require('./api')
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json())
 
-
-scraperAPI(app)
+nlpAPI(app)
 
 app.use(errorHandler)
 

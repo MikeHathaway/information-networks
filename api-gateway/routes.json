@@ -1,0 +1,28 @@
+[{
+	"host": "localhost",
+  "port": "3000",
+	"redirects":[{
+		"path": "/scraper",
+		"method": "get"
+	},
+  {
+		"path": "/scraper",
+		"method": "post"
+	}]
+},
+{
+	"host": "localhost",
+  "port": "4000",
+	"redirects":[{
+		"path": "/user",
+		"method": "get"
+	},
+  {
+		"path": "/user/:id",
+		"method": "get"
+	},
+  {
+    "path": "/user",
+    "method": "post"
+  }]
+}]
