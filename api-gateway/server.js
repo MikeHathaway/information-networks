@@ -18,26 +18,25 @@ api(app)
 
 
 function appMethod(host, port, path, method){
-  console.log(host,port,path,method)
-    app.all(path, (req, res) => {
-        console.log("[INFO] API request on %s:%s%s send to %s:%s%s", server.address().address, server.address().port, req.originalUrl, host, port, req.originalUrl)
-        let rreq = null
+  app.all(path, (req, res) => {
+      console.log("[INFO] API request on %s:%s%s send to %s:%s%s", server.address().address, server.address().port, req.originalUrl, host, port, req.originalUrl)
+      let rreq = null
 
-        if(host.indexOf("http://") <= -1 && host.indexOf("https://") <= -1){
-            host = "http://"+host
-        }
+      if(host.indexOf("http://") <= -1 && host.indexOf("https://") <= -1){
+          host = "http://"+host
+      }
 
-        const url = host + ":" + port + req.originalUrl
+      const url = host + ":" + port + req.originalUrl
 
-        if(method.toUpperCase() === "POST" || method.toUpperCase() == "PUT"){
-            rreq = request.post({uri: url, json: req.body})
-        }
-        else {
-            rreq = request(url)
-        }
+      if(method.toUpperCase() === "POST" || method.toUpperCase() == "PUT"){
+          rreq = request.post({uri: url, json: req.body})
+      }
+      else {
+          rreq = request(url)
+      }
 
-        req.pipe(rreq).pipe(res)
-    })
+      req.pipe(rreq).pipe(res)
+  })
 }
 
 // stores the registered routes
@@ -45,6 +44,8 @@ const storedRoutes = []
 
 
 // registers a route for each request
+  //instantiated by api call to gateway
+  //need to have service server running to function
 function registerRoutes(mappings){
   return mappings.map(route => {
     return route.redirects.forEach(redirect => {
@@ -55,10 +56,11 @@ function registerRoutes(mappings){
   })
 }
 
+// executes the registerRoutes function
 registerRoutes(mappings)
 
 
-
+console.log(storedRoutes)
 
 app.use(errorHandler)
 
@@ -73,6 +75,5 @@ const server = app.listen(port, () => {
   const host = server.address().address
   const port = server.address().port
 
-  console.log(host)
   console.log('[INFO] listening at http://%s:%s', host, port)
 })
