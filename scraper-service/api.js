@@ -10,6 +10,7 @@ module.exports = (app) => {
 
   //returns default set of sites
   app.get('/scraper', handleScraperGet)
+
   app.post('/scraper', scrapeNewSite)
 
 }
