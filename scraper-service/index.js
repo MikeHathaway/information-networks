@@ -34,6 +34,7 @@ function targetHTML(htmlString){
   return cheerio.load(htmlString)
 }
 
+
 //may want to look into utilizing the .trim() string method
   //og:title
 function retreiveMetaData($){
