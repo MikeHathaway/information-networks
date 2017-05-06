@@ -16,7 +16,6 @@ const sitesOfInterest = [
 app.get('/',getSiteSentiment(sitesOfInterest))
 
 
-
 function getSiteSentiment(sitesOfInterest){
   return (req,res,next) => {
     return res.send(siteSentimentPromise(sitesOfInterest))

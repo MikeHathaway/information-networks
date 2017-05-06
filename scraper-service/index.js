@@ -35,11 +35,25 @@ function targetHTML(htmlString){
 }
 
 //may want to look into utilizing the .trim() string method
+  //og:title
 function retreiveMetaData($){
+  // const headlines = $('article').text() //original approach
   const headlines = $('article').text()
-  return headlines.split('         ').map(headline =>{
+  // const headlines = $('meta[property="og:title"]')//.attr('content')
+
+  return headlines.split('  ').map(headline =>{
     return {'headline': headline}
   })
+}
+
+
+function checkSite(inputSites){
+  if(site === 'breitbart'){
+    return 'title'
+  }
+  else if(site === 'NYT'){
+    return 'story-heading'
+  }
 }
 
 module.exports = scrapeSites
