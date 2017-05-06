@@ -33,6 +33,15 @@ const appMethod = function(host, port, path, method){
     });
 }
 
+
+app.use(errorHandler)
+
+function errorHandler(err, req, res, next){
+  throw new Error('Something went wrong!, err:' + err)
+  res.status(500).send('Something went wrong!')
+  next()
+}
+
 app.listen(port, () => {
   console.log('Listening on port', port)
 });
