@@ -14,6 +14,8 @@ https://www.nginx.com/blog/deploying-microservices/
 
 http://www.richardrodger.com/monolithic-nodejs#.WQlXWHXyvCJ
 
+https://www.npmjs.com/package/express-microservice-starter
+
 Write a blog post on medium that explains the output.
   Usage of a microservices framework that relys upon pattern matching to route messages through a series of systems.
   Primary routing control undertaken by the api-gateway.

@@ -13,6 +13,6 @@
     "express": "^4.15.2",
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
-    "seneca": "^3.3.0"
+    "body-parser": "^1.17.1"
   }
 }

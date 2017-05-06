@@ -32,8 +32,8 @@ const sitesOfInterest = [
 module.exports = (app) => {
 
   //perform sentiment analysis on all texts
-  app.get('/scraper/sentiment', handleScraperGet)
+  app.get('/scraper/sentiment', (req,res,next) => {})
 
-  app.post('/scraper', scrapeNewSite)
+  app.post('/scraper', (req,res,next) => {})
 
 }
