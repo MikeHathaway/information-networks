@@ -16,7 +16,9 @@ api(app)
 //http://www.sascha.tech/2016/02/05/building-a-simple-api-gateway-with-expressjs/
 //https://medium.com/@cramirez92/build-a-nodejs-cinema-microservice-and-deploying-it-with-docker-part-1-7e28e25bfa8b
 
-const appMethod = function(host, port, path, method){
+
+function appMethod(host, port, path, method){
+  console.log(host,port,path,method)
     app.all(path, (req, res) => {
         console.log("[INFO] API request on %s:%s%s send to %s:%s%s", server.address().address, server.address().port, req.originalUrl, host, port, req.originalUrl)
         let rreq = null
@@ -25,7 +27,7 @@ const appMethod = function(host, port, path, method){
             host = "http://"+host
         }
 
-        const url = host+":"+port+req.originalUrl
+        const url = host + ":" + port + req.originalUrl
 
         if(method.toUpperCase() === "POST" || method.toUpperCase() == "PUT"){
             rreq = request.post({uri: url, json: req.body})
@@ -39,16 +41,23 @@ const appMethod = function(host, port, path, method){
 }
 
 // stores the registered routes
-const storedFunction = [];
+const storedRoutes = []
+
 
 // registers a route for each request
-for(var i = 0; i < mappings.length; i++){
-	for(var j = 0; j < mappings[i].redirects.length; j++){
-        var method = mappings[i].redirects[j].method === undefined?"GET":mappings[i].redirects[j].method;
-        storedFunction.push(appMethod(mappings[i].host, mappings[i].port, mappings[i].redirects[j].path, method));
-        console.log("[INIT] Created route to %s %s:%s%s ", method.toUpperCase(),mappings[i].host, mappings[i].port, mappings[i].redirects[j].path);
-	}
+function registerRoutes(mappings){
+  return mappings.map(route => {
+    return route.redirects.forEach(redirect => {
+      const method = redirect.method === undefined ? "GET" : redirect.method
+      storedRoutes.push(appMethod(route.host, route.port, redirect.path, method))
+      console.log("[INIT] Created route to %s %s:%s%s ", method.toUpperCase(), route.host, route.port, redirect.path)
+    })
+  })
 }
+
+registerRoutes(mappings)
+
+
 
 
 app.use(errorHandler)
@@ -58,9 +67,12 @@ function errorHandler(err, req, res, next){
   res.status(500).send('Something went wrong!')
 }
 
+
+
 const server = app.listen(port, () => {
   const host = server.address().address
   const port = server.address().port
 
+  console.log(host)
   console.log('[INFO] listening at http://%s:%s', host, port)
 })
