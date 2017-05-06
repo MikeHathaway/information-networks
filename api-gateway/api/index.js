@@ -1,4 +1,4 @@
-const scraper = require('../scraper-service')
+const scraper = require('../../scraper-service')
 const analyzeText = require('../nlp-service')
 
 
