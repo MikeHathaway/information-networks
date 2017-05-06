@@ -13,7 +13,7 @@ scraperAPI(app)
 app.use(errorHandler)
 
 function errorHandler(err, req, res, next){
-  reject(new Error('Something went wrong!, err:' + err))
+  throw new Error('Something went wrong!, err:' + err)
   res.status(500).send('Something went wrong!')
   next()
 }

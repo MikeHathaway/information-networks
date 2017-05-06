@@ -12,20 +12,26 @@ module.exports = (app) => {
   app.get('/scraper', handleScraperGet)
   app.post('/scraper', scrapeNewSite)
 
-
 }
 
 
 ////////// Scraper API Handlers //////////
 function handleScraperGet(req,res,next){
-  // console.log(req.body)
-  // const {giraffe} = req.body
-  // console.log(siteToScrape)
-  scraper(defaultSites)
+  return scraper(defaultSites)
     .then((headlines) => {
-      return res.json(headlines[0])
+      return res.json(headlines)
     })
     .catch((err) => console.error(err))
 }
 
-const {giraffe} = req.body
+
+function scrapeNewSite(req,res,next){
+  const {urls} = req.body
+
+  return scraper(urls)
+    .then((headlines) => {
+      return res.json(headlines)
+    })
+    .catch((err) => console.error(err))
+
+}
