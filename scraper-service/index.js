@@ -14,13 +14,16 @@ const Promise = require('bluebird')
 
 function scrapeSites(args){
   console.log(args)
-  // if(args.length > 1){
-  //   return Promise.map(args, (site) => {
-  //     return crawlSite(site)
-  //   })
-  //   .then((data) => data)
-  //   .catch(err => console.error(err))
-  // }
+
+  if(Array.isArray(args)){
+    if(args.length > 1){
+      return Promise.map(args, (site) => {
+        return crawlSite(site)
+      })
+      .then((data) => data)
+      .catch(err => console.error(err))
+    }
+  }
   return crawlSite(args)
 }
 
