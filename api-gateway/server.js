@@ -12,6 +12,8 @@ app.use(bodyparser.json())
 api(app)
 
 //http://www.sascha.tech/2016/02/05/building-a-simple-api-gateway-with-expressjs/
+//https://medium.com/@cramirez92/build-a-nodejs-cinema-microservice-and-deploying-it-with-docker-part-1-7e28e25bfa8b
+
 const appMethod = function(host, port, path, method){
     app.all(path, (req, res) => {
         console.log("[INFO] API request on %s:%s%s send to %s:%s%s", server.address().address, server.address().port, req.originalUrl, host, port, req.originalUrl)

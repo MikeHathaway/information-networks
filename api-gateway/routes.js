@@ -3,17 +3,19 @@ const routes = [{
   prefix: '/v1',
   postfix: '/?param=true',
   map: {
-    home: {
+    scraper: {
       GET: true,
       POST: true,
-      alias: '/home'
+      alias: '/scraper'
     },
-    logout: {
+    nlp: {
       GET: true,
+      POST: true,
       redirect: '/'
     },
-    profile: {
+    database: {
       GET: true,
+      POST: true,
       autoreply: false
     },
     login: {

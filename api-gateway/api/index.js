@@ -1,5 +1,5 @@
 const scraper = require('../../scraper-service')
-const analyzeText = require('../nlp-service')
+const analyzeText = require('../../nlp-service')
 
 
 const sitesOfInterest = [
@@ -32,7 +32,9 @@ const sitesOfInterest = [
 module.exports = (app) => {
 
   //perform sentiment analysis on all texts
-  app.get('/scraper/sentiment', (req,res,next) => {})
+  app.get('/scraper/sentiment', (req,res,next) => {
+    res.send('hello')
+  })
 
   app.post('/scraper', (req,res,next) => {})
 
