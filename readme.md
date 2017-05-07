@@ -24,3 +24,6 @@ The ultimate goal is to build a new type of newsfeed.
 
   Add a pick your poison feature:
     -sliding scale that modulates the weighting of various partisanships for sites
+
+http://www.sascha.tech/2016/02/05/building-a-simple-api-gateway-with-expressjs/
+https://medium.com/@cramirez92/build-a-nodejs-cinema-microservice-and-deploying-it-with-docker-part-1-7e28e25bfa8b

@@ -1,13 +1,13 @@
 const app = require('express')()
 const bodyparser = require('body-parser')
-const port = process.env.PORT || '6000'
-const databaseApi = require('./api')
+const port = process.env.PORT || '5000'
+const visualizationApi = require('./api')
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json())
 
 
-databaseApi(app)
+visualizationApi(app)
 
 app.use(errorHandler)
 

@@ -22,9 +22,7 @@ module.exports = (app,server) => {
             rreq = request(url)
         }
 
-        console.log(rreq)
         req.pipe(rreq).pipe(res)
-        return rreq
     })
   }
 
