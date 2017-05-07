@@ -14,15 +14,15 @@
 	"host": "localhost",
   "port": "4000",
 	"redirects":[{
-		"path": "/user",
+		"path": "/analysis",
 		"method": "get"
 	},
   {
-		"path": "/user/:id",
+		"path": "/analysis/:siteid",
 		"method": "get"
 	},
   {
-    "path": "/user",
+    "path": "/analysis",
     "method": "post"
   }]
 }]
