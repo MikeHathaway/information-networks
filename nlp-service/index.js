@@ -3,7 +3,7 @@
 
 const Promise = require('bluebird')
 const scraper = require('../scraper-service')
-const dotenv = require('dotenv').config({path: 'nlp-service/.env'})
+const dotenv = require('dotenv').config({path: './.env'})
 const api_key = process.env.GOOGLE_API_KEY
 const NLP = require('google-nlp')
 const nlp = new NLP(api_key)
@@ -33,4 +33,7 @@ function callApi(text){
 
 
 
-module.exports = analyzeText
+module.exports = {
+  analyzeText,
+  callApi
+}

@@ -11,7 +11,7 @@ nlpAPI(app)
 app.use(errorHandler)
 
 function errorHandler(err, req, res, next){
-  throw new Error('Something went wrong!, err:' + err)
+  throw new Error('Something went wrong in the NLP module!, err:' + err)
   res.status(500).send('Something went wrong!')
 }
 
