@@ -3,13 +3,14 @@ const nlpHandlers = require('./handlers')
 
 module.exports = (app,server) => {
 
-    // app.get('/nlp', analyzeText)
+    app.get('/analysis',)
     app.post('/analysis', analyzeText)
 
 }
 
 
 function analyzeText(req,res,next){
+  console.log(req.body)
   const {text} = req.body
   console.log(text)
   nlp.callApi(text)

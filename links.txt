@@ -1,0 +1,11 @@
+**Links follow the path of the rabbit hole journey**
+
+http://codewinds.com/blog/2015-11-14-microservices-nodevember.html
+
+http://container-solutions.com/microservices-artificial-intelligence-os/
+Particularly interesting article discussing how the complexity of inputs and outputs that can be handled must by nature be less than the complexity of the controller - namely human operator.
+  Humans are approaching the limits of their ability to comprehend systems, and current solutions are only patching the problem.
+    Ultimate solution seen as a networked collective of autonomous agents.
+    Fish tank metaphor ->
+
+http://www.necsi.edu/projects/yaneer/Civilization.html

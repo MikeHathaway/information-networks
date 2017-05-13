@@ -1,12 +1,14 @@
 //https://www.textrazor.com/technology
 //https://www.npmjs.com/package/google-nlp
 
+//https://softwareengineering.stackexchange.com/questions/343669/microservice-interaction-and-formatting
+
 const Promise = require('bluebird')
 const scraper = require('../scraper-service')
 const dotenv = require('dotenv').config({path: './.env'})
-const api_key = process.env.GOOGLE_API_KEY
+const apiKey = process.env.GOOGLE_API_KEY
 const NLP = require('google-nlp')
-const nlp = new NLP(api_key)
+const nlp = new NLP(apiKey)
 
 
 
@@ -28,7 +30,6 @@ function callApi(text){
           console.log( 'Error:', error.message );
       })
 }
-
 
 
 
