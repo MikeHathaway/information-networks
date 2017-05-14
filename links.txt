@@ -9,3 +9,17 @@ Particularly interesting article discussing how the complexity of inputs and out
     Fish tank metaphor ->
 
 http://www.necsi.edu/projects/yaneer/Civilization.html
+
+
+https://medium.com/@stockholmux/store-javascript-objects-in-redis-with-node-js-the-right-way-1e2e89dbbf64
+7 part guide to redis and nodejs
+
+
+https://redislabs.com/blog/redis-as-a-json-store/
+Guide to using Redis to store JSON typed data, something that isn't easy easy in the vanilla Redis
+  iorejson is the npm client for node.js json data storage and retreival. It makes use of generator functions.
+
+
+https://davidwalsh.name/es6-generators
+Introduction to generator functions. Instead of normal functions which run to completion, generator functions can start and stop arbitrarily depending on external instructions.
+  Seems to be part of the data stream model of computing.
