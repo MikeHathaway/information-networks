@@ -1,14 +1,15 @@
-**Links follow the path of the rabbit hole journey**
+**Links follow the path of the journey down the rabbit hole**
 
 http://codewinds.com/blog/2015-11-14-microservices-nodevember.html
 
 http://container-solutions.com/microservices-artificial-intelligence-os/
-Particularly interesting article discussing how the complexity of inputs and outputs that can be handled must by nature be less than the complexity of the controller - namely human operator.
+Particularly interesting article discussing how the collective complexity of inputs and outputs that can be handled must by nature be less than the complexity of the controller - namely human operator.
   Humans are approaching the limits of their ability to comprehend systems, and current solutions are only patching the problem.
     Ultimate solution seen as a networked collective of autonomous agents.
-    Fish tank metaphor ->
+    Parallel metaphor in benefits of democracy
 
 http://www.necsi.edu/projects/yaneer/Civilization.html
+In a hierarchical system, the collective complexity of functionality much always be less then the complexity of the controller.
 
 
 https://medium.com/@stockholmux/store-javascript-objects-in-redis-with-node-js-the-right-way-1e2e89dbbf64
@@ -23,3 +24,7 @@ Guide to using Redis to store JSON typed data, something that isn't easy easy in
 https://davidwalsh.name/es6-generators
 Introduction to generator functions. Instead of normal functions which run to completion, generator functions can start and stop arbitrarily depending on external instructions.
   Seems to be part of the data stream model of computing.
+
+
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+Guide to dockerizing a node web app

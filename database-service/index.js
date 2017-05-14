@@ -29,11 +29,14 @@ const client = redis.createClient({
 //Enable usage of the async method chain on the redis client, providing promise syntax
 bluebird.promisifyAll(redis.RedisClient.prototype)
 
-client.on("error", function (err) {
-    console.log("Error " + err)
-})
+client.on("error", handleErr)
 
 
+function handleErr(err){
+  return console.error(err)
+}
+
+//ReJSON package
 function* initRedisConnect(){
   yield instance.connect()
 
