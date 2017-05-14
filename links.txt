@@ -1,7 +1,7 @@
 **Links follow the path of the journey down the rabbit hole**
 
 http://codewinds.com/blog/2015-11-14-microservices-nodevember.html
-Contains an extensive list of links 
+Contains an extensive list of links
 
 http://container-solutions.com/microservices-artificial-intelligence-os/
 Particularly interesting article discussing how the collective complexity of inputs and outputs that can be handled must by nature be less than the complexity of the controller - namely human operator.
@@ -33,3 +33,6 @@ Guide to dockerizing a node web app
 
 https://deis.com/blog/2016/connecting-docker-containers-1/
 Guide to connecting a node web app
+
+
+http://oldblog.antirez.com/post/redis-persistence-demystified.html

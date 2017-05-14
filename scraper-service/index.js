@@ -10,7 +10,7 @@ const rp = require('request-promise')
 const cheerio = require('cheerio')
 const Promise = require('bluebird')
 
-
+//may be worth testing redis caching in the scraper services
 
 function scrapeSites(args){
   console.log(args)
@@ -53,7 +53,7 @@ function retreiveMetaData($){
 }
 
 
-function checkSite(inputSites){
+function siteHTMLtarget(inputSites){
   if(site === 'breitbart'){
     return 'title'
   }
