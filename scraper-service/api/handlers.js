@@ -1,4 +1,4 @@
-const scraper = require('../index')
+const scraper = require('../app')
 
 const defaultSites = [
   'http://www.breitbart.com/',

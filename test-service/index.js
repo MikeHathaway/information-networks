@@ -9,8 +9,10 @@ function testContainers(url){
     .catch((err) => console.error(err))
 }
 
-//nlp analysis
-testContainers('http://localhost:4000/analysis')
+//nlp analysis test
+const nlpPort = 'http://localhost:4000/analysis'
+testContainers(nlpPort)
 
-//web scraper
-testContainers('http://localhost:3000/scraper')
+//web scraper test
+const scraperPort = 'http://localhost:3000/scraper'
+testContainers(scraperPort)
