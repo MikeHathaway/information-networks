@@ -1,0 +1,5 @@
+Article explaining how to set up a basic microservices architecture.
+
+Create an npm package that generates microservices boilerplate structure.
+  Could include options to specify how many services, prebuilt server, etc.
+    Full or manual installation for example.
