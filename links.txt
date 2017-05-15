@@ -60,4 +60,4 @@ Each container has its own ports (and numbers) separate from the hosting systems
 http://stackoverflow.com/questions/24272535/rebuild-container-after-each-change
 Interesting stackoverflow answer for how to deploy a docker container and deal with rebuilding
   Makes use of the -v flag
-    sudo docker run -it -p 127.0.0.1:3001:3000 -v /home/mike/Desktop/Projects/infoNetAnalysis/nlp-service:/usr/info-net-analysis/nlp-service nlp-service
+    sudo docker run -it -p 127.0.0.1:4000:4000 -v /home/mike/Desktop/Projects/infoNetAnalysis/nlp-service:/usr/info-net-analysis/nlp-service nlp-service
