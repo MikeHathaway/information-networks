@@ -3,7 +3,7 @@ const nlpHandlers = require('./handlers')
 
 module.exports = (app,server) => {
 
-    app.get('/analysis',)
+    // app.get('/analysis',)
     app.post('/analysis', analyzeText)
 
 }

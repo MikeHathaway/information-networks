@@ -16,5 +16,6 @@ function errorHandler(err, req, res, next){
 }
 
 app.listen(port,() => {
+  console.log(nlpAPI)
   console.log(`Server listening at port ${port}`)
 })

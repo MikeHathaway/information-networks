@@ -4,7 +4,6 @@
 //https://softwareengineering.stackexchange.com/questions/343669/microservice-interaction-and-formatting
 
 const Promise = require('bluebird')
-const scraper = require('../scraper-service')
 const dotenv = require('dotenv').config({path: './.env'})
 const apiKey = process.env.GOOGLE_API_KEY
 const NLP = require('google-nlp')

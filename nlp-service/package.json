@@ -4,11 +4,13 @@
   "description": "perform natural language processing tasks on data received from scraper-service",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node /usr/info-net-analysis/nlp-service/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.15.2",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "dotenv": "^4.0.0",
