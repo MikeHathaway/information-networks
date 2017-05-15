@@ -1,5 +1,5 @@
 const request = require('request')
-const mappings = [].concat(require('./routes.json'))
+const mappings = [].concat(require('../routes.json'))
 
 
 module.exports = (app,server) => {
