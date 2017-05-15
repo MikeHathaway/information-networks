@@ -17,5 +17,6 @@ function errorHandler(err, req, res, next){
 }
 
 app.listen(port,() => {
+  console.log(scraperAPI)
   console.log(`Server listening at port ${port}`)
 })

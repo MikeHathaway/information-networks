@@ -36,3 +36,14 @@ Guide to connecting a node web app
 
 
 http://oldblog.antirez.com/post/redis-persistence-demystified.html
+
+
+https://www.smashingmagazine.com/2016/04/stop-installing-your-webdev-environment-locally-with-docker/
+https://nodesource.com/blog/8-protips-to-start-killing-it-when-dockerizing-node-js/
+https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application
+Add a Dockerfile and .dockerfile to each service. The Dockerfile acts as a procedure for the creation of the docker container.
+  Docker file needs to specify a local file path (local to the docker container), and copy over the project directory to the container directory.
+
+  Once built, execute the following commands to build the container according to Dockerfile specs, and then run according to the specified command.
+    sudo docker build -t scraper-service .
+    sudo docker run -it -p 127.0.0.1:3000:3000 scraper-service

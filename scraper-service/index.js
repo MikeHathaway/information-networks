@@ -12,6 +12,10 @@ const Promise = require('bluebird')
 
 //may be worth testing redis caching in the scraper services
 
+//command to run docker
+//sudo docker run -p 8080:8080 -p 3001:3001 --name node-tut -v $(pwd)/src:/usr/info-net-analysis --sig-proxy=false scraper-service npm start
+
+
 function scrapeSites(args){
   console.log(args)
 
