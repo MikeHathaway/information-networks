@@ -1,0 +1,25 @@
+https://www.smashingmagazine.com/2016/04/stop-installing-your-webdev-environment-locally-with-docker/
+https://nodesource.com/blog/8-protips-to-start-killing-it-when-dockerizing-node-js/
+https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application
+Add a Dockerfile and .dockerfile to each service. The Dockerfile acts as a procedure for the creation of the docker container.
+  Docker file needs to specify a local file path (local to the docker container), and copy over the project directory to the container directory.
+
+  Once built, execute the following commands to build the container according to Dockerfile specs, and then run according to the specified command.
+    sudo docker build -t scraper-service .
+    sudo docker run -it -p 127.0.0.1:3000:3000 scraper-service
+
+      The p command specified the port at which the container will be accessible.
+      This is equivalent to localhost:hostPort:dockerPort
+
+
+https://docs.docker.com/docker-cloud/apps/ports/#using-the-apicli-1
+Each container has its own ports (and numbers) separate from the hosting systems ports.
+
+
+http://stackoverflow.com/questions/24272535/rebuild-container-after-each-change
+Interesting stackoverflow answer for how to deploy a docker container and deal with rebuilding
+  Makes use of the -v flag
+    sudo docker run -it -p 127.0.0.1:4000:4000 -v /home/mike/Desktop/Projects/infoNetAnalysis/nlp-service:/usr/info-net-analysis/nlp-service nlp-service
+
+https://hharnisc.github.io/2016/06/19/integration-testing-with-docker-compose.html
+Guide to using Docker Compose for continuous integration testing, and the advantages therein.

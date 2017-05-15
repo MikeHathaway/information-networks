@@ -1,0 +1,21 @@
+http://codewinds.com/blog/2015-11-14-microservices-nodevember.html
+Contains an extensive list of links
+
+http://container-solutions.com/microservices-artificial-intelligence-os/
+Particularly interesting article discussing how the collective complexity of inputs and outputs that can be handled must by nature be less than the complexity of the controller - namely human operator.
+  Humans are approaching the limits of their ability to comprehend systems, and current solutions are only patching the problem.
+    Ultimate solution seen as a networked collective of autonomous agents.
+    Parallel metaphor in benefits of democracy
+
+http://www.necsi.edu/projects/yaneer/Civilization.html
+In a hierarchical system, the collective complexity of functionality much always be less then the complexity of the controller.
+
+
+https://martinfowler.com/articles/microservices.html
+Seminal article by Martin Fowler arguing the virtues of microservices.
+
+https://www.nginx.com/blog/deploying-microservices/
+
+http://www.richardrodger.com/monolithic-nodejs#.WQlXWHXyvCJ
+
+https://www.npmjs.com/package/express-microservice-starter

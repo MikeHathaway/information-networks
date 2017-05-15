@@ -1,0 +1,16 @@
+https://medium.com/@stockholmux/store-javascript-objects-in-redis-with-node-js-the-right-way-1e2e89dbbf64
+7 part guide to redis and nodejs
+
+http://oldblog.antirez.com/post/redis-persistence-demystified.html
+Redis is an in memory data store based upon key value pairs (noSQL).
+  This enables it to easily be used for caching and data persistence.
+
+https://redislabs.com/blog/redis-as-a-json-store/
+Guide to using Redis to store JSON typed data, something that isn't easy easy in the vanilla Redis - support for key value pairs and not necessarily JSON
+  iorejson is the npm client for node.js json data storage and retreival.
+  It makes use of generator functions.
+
+
+https://github.com/luin/ioredis#connect-to-redis
+Guide to the ioredis client for Redis on node.
+It includes a client for interacting with the ReJSON module.

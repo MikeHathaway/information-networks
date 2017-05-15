@@ -6,5 +6,5 @@ It has been designed as a series of micro-services. Deployment utilizes docker c
 
 Current Services Include:
 * Web Scraping Service
-* Natural Language Processing Services
+* Natural Language Processing Service
 * Testing Service

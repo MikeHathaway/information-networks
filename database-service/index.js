@@ -46,9 +46,14 @@ function* initRedisConnect(){
     ]
   })
 
-  const value = yield instance.get('foo', '.')
-  console.log(value)
-  return value
+  console.log('heyoooooo')
+  // const value = yield instance.get('foo', '.')
+  yield instance.get('foo', '.')
+  // console.log(value)
+  // return value
 }
 
-initRedisConnect()
+const dbConnect = initRedisConnect()
+dbConnect.next()
+dbConnect.next()
+dbConnect.next()

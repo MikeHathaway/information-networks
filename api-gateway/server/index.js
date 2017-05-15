@@ -26,5 +26,6 @@ const server = app.listen(port, () => {
 })
 
 
-// handle speserver requests and route to specified microservices
+// handle sserver requests and route to specified microservices - rudimentary proxy
+  //Inspired by: http://www.sascha.tech/2016/02/05/building-a-simple-api-gateway-with-expressjs/
 reqHandlers(app,server)
