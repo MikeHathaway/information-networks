@@ -1,0 +1,16 @@
+https://martinfowler.com/articles/microservices.html
+https://www.nginx.com/blog/deploying-microservices/
+
+http://www.richardrodger.com/monolithic-nodejs#.WQlXWHXyvCJ
+
+https://www.npmjs.com/package/express-microservice-starter
+
+Write a blog post on medium that explains the output.
+  Primary routing control undertaken by the api-gateway.
+
+
+
+
+
+http://www.sascha.tech/2016/02/05/building-a-simple-api-gateway-with-expressjs/
+https://medium.com/@cramirez92/build-a-nodejs-cinema-microservice-and-deploying-it-with-docker-part-1-7e28e25bfa8b
