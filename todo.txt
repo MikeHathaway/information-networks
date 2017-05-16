@@ -1,0 +1,7 @@
+Automate continuos integration testing
+
+Database persistence across docker builds
+
+Dockerize API Gateway / extend proxy gateway
+
+Build out an npm package using Yeoman generator

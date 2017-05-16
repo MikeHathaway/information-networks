@@ -48,12 +48,19 @@ function targetHTML(htmlString){
   //og:title
 function retreiveMetaData($){
   // const headlines = $('article').text() //original approach
-  const headlines = $('article').text()
+  // const headlines = $('article').text()
   // const headlines = $('meta[property="og:title"]')//.attr('content')
 
-  return headlines.split('  ').map(headline =>{
-    return {'headline': headline}
+  // return headlines.split('  ').map(headline =>{
+  //   return {'headline': headline}
+  // })
+  const articleSummaries = $('p .summary').text()
+  console.log(articleSummaries)
+
+  return articleSummaries.map(summary => {
+    return {'summary': summary}
   })
+
 }
 
 

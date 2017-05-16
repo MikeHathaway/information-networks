@@ -6,6 +6,7 @@ const bluebird = require('bluebird')
 const redis = require('redis')
 const ReJSON = require('iorejson') //reddis JSON information interchange
 const instance = new ReJSON()
+const Rx = require('rx')
 
 const client = redis.createClient({
     retry_strategy: function (options) {
@@ -26,9 +27,6 @@ const client = redis.createClient({
     }
 })
 
-//Enable usage of the async method chain on the redis client, providing promise syntax
-bluebird.promisifyAll(redis.RedisClient.prototype)
-
 client.on("error", handleErr)
 
 
@@ -40,15 +38,13 @@ function handleErr(err){
 function* initRedisConnect(){
   yield instance.connect()
 
-  yield instance.set('foo', '.', {
-    bar: [
-      'hello world'
-    ]
-  })
+  yield instance.set('foo', 'bar')
 
-  console.log('heyoooooo')
+  yield instance.get('foo').then((result) => console.log(result))
+
+  console.log(instance.get('foo').then(result => console.log(result)))
   // const value = yield instance.get('foo', '.')
-  yield instance.get('foo', '.')
+  yield instance.get('http://localhost:3000/scraper', (result) => console.log(result))
   // console.log(value)
   // return value
 }
