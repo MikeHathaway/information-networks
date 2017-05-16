@@ -48,28 +48,41 @@ function targetHTML(htmlString){
   //og:title
 function retreiveMetaData($){
   // const headlines = $('article').text() //original approach
-  // const headlines = $('article').text()
+  const headlines = $('article')
+
+  return Object.keys(headlines).map(headline => {
+    console.log(headlines[headline].children.text)
+    // console.log(headlines[headline])
+    // return headlines[headline]
+    // return headlines[headline].text()
+  })
+
+  console.log(Object.keys(headlines['98']))
+
   // const headlines = $('meta[property="og:title"]')//.attr('content')
 
   // return headlines.split('  ').map(headline =>{
   //   return {'headline': headline}
   // })
-  const articleSummaries = $('p .summary').text()
-  console.log(articleSummaries)
-
-  return articleSummaries.map(summary => {
-    return {'summary': summary}
-  })
-
 }
 
 
-function siteHTMLtarget(inputSites){
-  if(site === 'breitbart'){
+// const headlines = $('meta[property="og:title"]')//.attr('content')
+function siteHTMLtarget(args){
+  return args.length > 1 ? args.map(findElement) : findElement(args[0])
+}
+
+function findElement(site){
+  if(site === 'http://www.breitbart.com/'){
     return 'title'
   }
-  else if(site === 'NYT'){
+  else if(site === 'https://www.nytimes.com'){
     return 'story-heading'
+    //'article'
+    //'p.summary'
+  }
+  else if(site === 'http://www.realclearpolitics.com/'){
+    return 'a'
   }
 }
 
