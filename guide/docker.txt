@@ -23,3 +23,8 @@ Interesting stackoverflow answer for how to deploy a docker container and deal w
 
 https://hharnisc.github.io/2016/06/19/integration-testing-with-docker-compose.html
 Guide to using Docker Compose for continuous integration testing, and the advantages therein.
+
+http://stackoverflow.com/questions/26153686/how-do-i-run-a-command-on-an-already-existing-docker-container
+Stackoverflow anwer providing a means of accessing the bash shell of a temporary image:
+  docker commit [CONTAINER_ID] temporary_image
+  docker run --entrypoint=bash -it temporary_image

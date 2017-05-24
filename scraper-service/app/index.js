@@ -68,11 +68,7 @@ function retreiveMetaData($){
 
 
 // const headlines = $('meta[property="og:title"]')//.attr('content')
-function siteHTMLtarget(args){
-  return args.length > 1 ? args.map(findElement) : findElement(args[0])
-}
-
-function findElement(site){
+function findElementToTarget(site){
   if(site === 'http://www.breitbart.com/'){
     return 'title'
   }

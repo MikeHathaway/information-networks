@@ -1,0 +1,10 @@
+version: '2'
+services:
+  scraper:
+    build: ./scraper-service
+    ports:
+      - "3000:3000"
+  nlp:
+    build: ./nlp-service
+    ports:
+      - "4000:4000"
